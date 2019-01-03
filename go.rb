@@ -56,6 +56,9 @@ class ArcherSpider < Kimurai::Base
       end
     end
 
+    #logout
+    browser.within_frame(:xpath, "//frameset/frame[@name='bottomLeftFrame']"){ browser.evaluate_script('doClick(72)') }
+
     #push results into DB
     db = SQLite3::Database.new "/data/db.db"
     rows = db.execute <<-SQL
